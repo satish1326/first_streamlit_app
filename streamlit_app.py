@@ -1,1 +1,2 @@
-created the mail python file
+import streamlit
+streamlit.little('My Parents New Healtyhy Diner')

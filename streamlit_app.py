@@ -95,5 +95,3 @@ def get_fruit_list(my_cnx):
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 # back_from_function=insert_row_snowflake(add_my_fruit)
 # streamlit.text(back_from_function)
-
-get_cur()

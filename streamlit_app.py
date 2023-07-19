@@ -53,10 +53,7 @@ my_data_row = my_cur.fetchall()
 streamlit.header("fruit load list contains")
 streamlit.dataframe(my_data_row)
 
-import streamlit
-import pandas
-import requests
-import snowflake.connector
+
 from urllib.error import URLError
 
 def get_fruity_vice_data(this_fruit_choice):

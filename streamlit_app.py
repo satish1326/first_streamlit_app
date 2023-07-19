@@ -28,7 +28,7 @@ streamlit.dataframe(my_fruit_list)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response)
 
- 
+
 
 def get_fruity_vice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+this_fruit_choice)
@@ -77,7 +77,7 @@ if streamlit.button('Get fruit list'):
 
 
 #my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
  with my_cnx_cursor() as my_cur:
   my_cur.execute("insert into fruit_load_list values ('from streamlit')")

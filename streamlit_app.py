@@ -69,7 +69,7 @@ def get_fruit_load_list():
  with my_cnx_cursor() as my_cur:
   my_cur.execute("select *from fruit_load_list")
   return my_cur.fetchall()
-my_cur=my_cnx.cursor()
+
 if streamlit.button('Get fruit list'):
  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
  my_data_rows=get_fruit_load_list()
@@ -77,14 +77,23 @@ if streamlit.button('Get fruit list'):
 
 
 #my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 def insert_row_snowflake(new_fruit):
- with my_cnx_cursor() as my_cur:
-  my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-  return "thanks for adding " + new_fruit
+  my_cnx = snowflake.connector.connect(**streamlit.secrets[“snowflake”])
+   data=get_fruit_list(my_cnx)
+   my_cnx.close()
+   df=pandas.DataFrame(data)
+   streamlit.table(df)
 
-add_my_fruit=streamlit.text_input('what do u like to add')
-if streamlit.button('add a fruit to a list'):
- my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
- back_from_function=insert_row_snowflake(add_my_fruit)
- streamlit.text(back_from_function)
+def get_fruit_list(my_cnx):
+   with my_cnx_cursor() as my_cur:
+     my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+     return my_cur.fetchall()
+
+#add_my_fruit=streamlit.text_input('what do u like to add')
+#if streamlit.button('add a fruit to a list'):
+# my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+# back_from_function=insert_row_snowflake(add_my_fruit)
+# streamlit.text(back_from_function)
+
+get_cur()

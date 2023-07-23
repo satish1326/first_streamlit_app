@@ -75,5 +75,11 @@ from urllib.error import URLError
 
 def insert_row_snowflake(new_fruit):
  with my_cnx_cursor() as my_cur:
-  my_cur.execute("insert into fruit_load_list values ('" +mango+ "')")
+  my_cur.execute("insert into fruit_load_list values ('" +kiwi+ "')")
   return "thanks for adding" +new_fruit
+
+if streamlit.button('Get fruit load list'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows=get_fruit_load_list()
+  my_cnx.close()
+  streamlit.dataframe(my_data_rows)

@@ -33,6 +33,4 @@ def insert_row_snowflake(new_fruit):
   return "thanks for adding" +new_fruit
 
 
- 
-except URLError as e:
-  streamlit.error()
+

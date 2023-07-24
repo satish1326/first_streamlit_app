@@ -1,7 +1,7 @@
-#import streamlit
-#import pandas
-#import requests
-#import snowflake.connector
+import streamlit
+import pandas
+import requests
+import snowflake.connector
 from urllib.error import URLError
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -35,9 +35,3 @@ def insert_row_snowflake(new_fruit):
   return "thanks for adding" +new_fruit
 streamlit.stop()
 
-
-import streamlit
-import pandas
-import requests
-import snowflake.connector
-from urllib.error import URLError

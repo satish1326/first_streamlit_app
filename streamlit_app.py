@@ -33,7 +33,7 @@ def insert_row_snowflake(new_fruit):
  with my_cnx_cursor() as my_cur:
   my_cur.execute("insert into fruit_load_list values ('" +Jackfruit+ "')")
   return "thanks for adding" +new_fruit
-streamli.stop()
+streamlit.stop()
 
 
 import streamlit

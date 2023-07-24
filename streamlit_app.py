@@ -27,22 +27,12 @@ streamlit.text(my_data_row)
 
 
   
-streamlit.header("Fruityvice Fruit Advice!")
-try:
-   fruit_choice = streamlit.text_input('What fruit would you like information about')
-   if not fruit_choice:
-       streamlit.error("please select a fruit to get info")
-   else:
-      back_from_function=get_fruityvice_data(fruit_choice)
-      streamlit.dataframe(back_from_function)
-
-add_my_fruit=streamlit.text_input('view your fruit list-add your favourites')
-streamlit.write('thanks for adding ', add_my_fruit)
-my_cur.execute("insert into fruit_load_list values('from streamlit')")
 def insert_row_snowflake(new_fruit):
  with my_cnx_cursor() as my_cur:
-  my_cur.execute("insert into fruit_load_list values ('" +Jackfruit+ "')")
+  my_cur.execute("insert into fruit_load_list values ('" +jackfruit+ "')")
   return "thanks for adding" +new_fruit
+
+
  
 except URLError as e:
   streamlit.error()
